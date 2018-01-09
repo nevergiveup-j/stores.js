@@ -7,8 +7,9 @@
     "dev": "node ./scripts/server.js",
     "build:lib": "babel src --out-dir lib --presets=es2015,react,stage-3",
     "build": "rm -rf dist & webpack --config ./scripts/webpack/webpack.config.js",
-    "lint": "eslint src examples --ext '.js,.jsx'",
-    "lint-staged": "lint-staged"
+    "lint:js": "eslint src examples --ext '.js,.jsx'",
+    "lint": "npm run lint:js",
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "prop-types": "^15.6.0",
