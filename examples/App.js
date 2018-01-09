@@ -13,7 +13,7 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    const store = new Store('sto', '1m');
+    const store = new Store('sto', '1Y1m');
     const store1 = new Store('sto1', '1m');
 
     store.set({ name: 'store name' });

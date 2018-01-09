@@ -37,16 +37,22 @@ const reMatchDate = /\d+[YMdhms]/g;
  * examples parseDate('2d1h')
  */
 const parseDate = (value) => {
+  let total = 0;
+
   if (reDate.test(value)) {
     const dates = value.match(reMatchDate);
-    if (dates.length) {
-      return dates.map(d => parseTimestamp(d));
-    }
 
-    // console.log('dates==', dates);
+    if (dates.length) {
+      dates.map((d) => {
+        total += parseTimestamp(d);
+        return total;
+      });
+
+      return total;
+    }
   }
 
-  return 0;
+  return total;
 };
 
 export default parseDate;
