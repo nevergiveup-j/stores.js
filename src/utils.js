@@ -6,7 +6,7 @@
 export function isObject(data) {
   return typeof data === 'object';
 }
- 
+
 /**
  * 深断言
  * @param {Object} a 数据1
@@ -19,10 +19,10 @@ export function deepAsset(a, b) {
 
 /**
  * 解析时间戳
- * @return {Number} 
+ * @return {Number}
  */
 export function timeNow() {
-  return +new Date;
+  return +new Date();
 }
 
 /**
@@ -32,8 +32,8 @@ export function timeNow() {
  * @return {Boolean}
  */
 export function isEqual(a, b) {
-  if(isObject(a) && isObject(b)) {
-    return deepAsset(a, b)
+  if (isObject(a) && isObject(b)) {
+    return deepAsset(a, b);
   }
   return false;
 }
