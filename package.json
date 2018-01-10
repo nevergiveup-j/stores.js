@@ -1,11 +1,13 @@
 {
-  "name": "storage",
-  "version": "0.0.1",
+  "name": "stores.js",
+  "version": "1.0.0",
   "author": "nevergivejun@163.com",
-  "description": "react storage",
+  "description": "storage",
   "keywords": [
     "react storage",
+    "store.js",
     "storage",
+    "stores",
     "store"
   ],
   "license": "MIT",
