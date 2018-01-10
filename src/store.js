@@ -23,8 +23,8 @@ class Store {
     let data = this.store[this.name];
 
     // 解析data
-    if(data && data.length){
-      try{
+    if (data && data.length) {
+      try {
         data = JSON.parse(data);
       } catch (e) {
         data = {};

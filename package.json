@@ -1,8 +1,15 @@
 {
   "name": "storage",
-  "version": "1.0.0",
+  "version": "0.0.1",
+  "author": "nevergivejun@163.com",
   "description": "react storage",
-  "main": "./src/index.js",
+  "keywords": [
+    "react storage",
+    "storage",
+    "store"
+  ],
+  "license": "MIT",
+  "main": "./lib/index.js",
   "scripts": {
     "dev": "node ./scripts/server.js",
     "build:lib": "babel src --out-dir lib --presets=es2015,react,stage-3 --ignore 'src/__tests__'",
@@ -11,7 +18,7 @@
     "lint": "npm run lint:js",
     "test": "jest --coverage",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "precommit": "lint-staged --debug"
+    "pre-commit": "lint-staged"
   },
   "dependencies": {
     "prop-types": "^15.6.0",
@@ -19,6 +26,7 @@
     "react-dom": "^15.5.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.1.2",
     "babel-jest": "^22.0.4",
@@ -58,12 +66,9 @@
     }
   },
   "lint-staged": {
-    "./src/*.js": [
+    "{src,examples}/*.{js,jsx}": [
       "eslint --fix",
       "git add"
     ]
-  },
-  "pre-commit": [
-    "precommit"
-  ]
+  }
 }
