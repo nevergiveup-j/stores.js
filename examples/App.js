@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import parseDate from '../src/parseDate';
 import Store from '../src/index';
 
 import './App.scss';
@@ -22,10 +21,7 @@ class App extends Component {
     store.delete();
 
     console.log('store===', store);
-    console.log('parseDate===', parseDate('1Y1m'));
     console.log('get===', store.get());
-    console.log('has===', store.has());
-    // console.log('delete===', store.delete());
   }
   render() {
     return (

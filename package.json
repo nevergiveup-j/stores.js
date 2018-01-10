@@ -10,6 +10,13 @@
     "stores",
     "store"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nevergiveup-j/stores.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nevergiveup-j/stores.js/issues"
+  },
   "license": "MIT",
   "main": "./lib/index.js",
   "scripts": {
