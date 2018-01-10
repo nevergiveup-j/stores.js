@@ -71,6 +71,8 @@ class Store {
     };
 
     this.store[this.name] = JSON.stringify(data);
+
+    return true;
   }
   // 删除数据
   delete() {

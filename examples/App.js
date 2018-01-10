@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import Store from '../src/index'
+import Store from '../src/index';
+import parseDate from '../src/parseDate';
 
 import './App.scss';
 
@@ -13,14 +14,19 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    const store = new Store('sto', '1Y1m');
-    const store1 = new Store('sto1', '1m');
+    const store = new Store('test1', '1Y1m');
+    // const store1 = new Store('test2', '1h1m');
 
     store.set({ name: 'store name' });
+    // store1.set({ name: 'store name' });
 
-    console.log('store===', store.get());
+    store.delete();
+
+    console.log('store===', store);
+    console.log('parseDate===', parseDate('1Y1m'));
+    console.log('get===', store.get());
     console.log('has===', store.has());
-    console.log('get===', store1.get());
+    // console.log('delete===', store.delete());
 	}
   render() {
     return (
