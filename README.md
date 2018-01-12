@@ -1,6 +1,6 @@
 # store 
 
-[![Build Status](https://travis-ci.org/nevergiveup-j/storage.svg?branch=master)](https://www.travis-ci.org/nevergiveup-j/storage)
+[![Build Status](https://travis-ci.org/nevergiveup-j/stores.js.svg?branch=master)](https://travis-ci.org/nevergiveup-j/stores.js)
 [![Coverage Status](https://coveralls.io/repos/github/nevergiveup-j/storage/badge.svg?branch=master)](https://coveralls.io/github/nevergiveup-j/storage?branch=master)
 [![npm package](https://img.shields.io/npm/v/stores.js.svg)](https://www.npmjs.com/package/stores.js)
 [![NPM downloads](https://img.shields.io/npm/dm/stores.js.svg)](https://www.npmjs.com/package/stores.js) 
