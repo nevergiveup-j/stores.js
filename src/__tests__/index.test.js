@@ -12,14 +12,14 @@ describe('store', () => {
     const store = new Store(KEY, DATES);
 
     store.set(VALUE);
-    expect(JSON.parse(store.store[KEY]).value).toEqual(VALUE);
-    expect(JSON.parse(store.store[KEY]).expire).toBeLessThan((utils.timeNow() + parseDate(DATES)));
+    expect(JSON.parse(store.store[`NG__${KEY}`]).value).toEqual(VALUE);
+    expect(JSON.parse(store.store[`NG__${KEY}`]).expire).toBeLessThan((utils.timeNow() + parseDate(DATES)));
     store.delete();
-    expect(store.store[KEY]).toBeUndefined();
+    expect(store.store[`NG__${KEY}`]).toBeUndefined();
     store.set(VALUE, PARAMS);
-    expect(JSON.parse(store.store[KEY]).params).toEqual(PARAMS);
+    expect(JSON.parse(store.store[`NG__${KEY}`]).params).toEqual(PARAMS);
     store.delete();
-    expect(store.store[KEY]).toBeUndefined();
+    expect(store.store[`NG__${KEY}`]).toBeUndefined();
   });
 
   test('store get', () => {
@@ -37,6 +37,22 @@ describe('store', () => {
     store.set(VALUE);
     expect(store.has()).toBeTruthy();
     store.delete();
+    expect(store.has()).toBeFalsy();
+  });
+
+  test('store clear', () => {
+    const store = new Store(KEY, DATES);
+
+    store.set(VALUE);
+    store.clear();
+    expect(store.has()).toBeFalsy();
+  });
+
+  test('store clearAll', () => {
+    const store = new Store(KEY, DATES);
+
+    store.set(VALUE);
+    store.clearAll();
     expect(store.has()).toBeFalsy();
   });
 });

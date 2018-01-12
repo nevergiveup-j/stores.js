@@ -18,9 +18,11 @@ class App extends Component {
     store.set({ name: 'store name' });
     // store1.set({ name: 'store name' });
 
-    store.delete();
+    // store.delete();
 
-    console.log('store===', store);
+    // store.clearAll();
+
+    console.log('store===', store.store);
     console.log('get===', store.get());
   }
   render() {

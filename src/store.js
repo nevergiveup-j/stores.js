@@ -9,10 +9,14 @@ const cacheStore = {};
  * 存储层，将单页数据保存于localStorage中
  */
 class Store {
-  constructor(name, expire = '7d') {
-    this.name = name;
+  constructor(name, expire = '7d', prefix = 'NG_') {
+    this.name = `${prefix}_${name}`;
     this.expire = parseDate(expire);
+    this.prefix = prefix;
     this.store = isSupported ? window.localStorage : cacheStore;
+
+    // 清除失效时间
+    this.clearExpireTime();
   }
   /**
    * 获取数据
@@ -23,7 +27,7 @@ class Store {
     let data = this.store[this.name];
 
     // 解析data
-    if(data && data.length){
+    if (data && data.length) {
       try {
         data = JSON.parse(data);
       } catch (e) {
@@ -77,6 +81,39 @@ class Store {
   // 删除数据
   delete() {
     delete this.store[this.name];
+  }
+  // 清除失效时间
+  clearExpireTime() {
+    Object.keys(this.store).map((key) => {
+      try {
+        const data = JSON.parse(this.store[key]);
+
+        if (data.expire && utils.timeNow() >= data.expire) {
+          delete this.store[key];
+        }
+      } catch (e) {
+        console.log(e);
+      }
+      return key;
+    });
+  }
+  // 清除当前store数据
+  clear() {
+    const re = new RegExp(`${this.prefix}`);
+
+    Object.keys(this.store).map((key) => {
+      if (re.test(key)) {
+        delete this.store[key];
+      }
+      return key;
+    });
+  }
+  // 清除全部store
+  clearAll() {
+    Object.keys(this.store).map((key) => {
+      delete this.store[key];
+      return key;
+    });
   }
 }
 
