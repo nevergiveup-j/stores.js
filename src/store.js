@@ -1,19 +1,25 @@
 import parseDate from './parseDate';
 import * as utils from './utils';
 
-const isSupported = !!window.localStorage;
 const cacheStore = {};
 
 /**
  * @class Store
  * 存储层，将单页数据保存于localStorage中
+ * @param {String} name   名字
+ * @param {String} expire 设置失效时间
+ * @param {String} prefix 前缀名字
+ * @param {String} typeStore 类型 local|session
  */
 class Store {
-  constructor(name, expire = '7d', prefix = 'NG_') {
-    this.name = `${prefix}_${name}`;
+  constructor(name, expire = '7d', prefix, typeStore = 'local') {
+    this.prefix = prefix || 'NG_';
+    this.name = `${this.prefix}_${name}`;
     this.expire = parseDate(expire);
-    this.prefix = prefix;
-    this.store = isSupported ? window.localStorage : cacheStore;
+
+    const isSupported = !!window[`${typeStore}Storage`];
+
+    this.store = isSupported ? window[`${typeStore}Storage`] : cacheStore;
 
     // 清除失效时间
     this.clearExpireTime();
