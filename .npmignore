@@ -6,4 +6,5 @@ examples
 .gitignore
 .stylelintrc
 .travis.yml
+src
 lib/**/__tests__/*.*
