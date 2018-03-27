@@ -62,7 +62,7 @@ class Store {
     data = JSON.parse(data);
 
     if (!data.expire || utils.timeNow() >= data.expire) {
-      return {};
+      return '';
     }
 
     return data.value;
@@ -90,12 +90,17 @@ class Store {
   }
   // 清除失效时间
   clearExpireTime() {
+    const re = new RegExp(`^${this.prefix}`);
     Object.keys(this.store).map((key) => {
       try {
-        const data = JSON.parse(this.store[key]);
+        if (re.test(key)) {
+          const data = JSON.parse(this.store[key]);
 
-        if (data.expire && utils.timeNow() >= data.expire) {
-          delete this.store[key];
+          if (utils.isObject(data)) {
+            if (data.expire && utils.timeNow() >= data.expire) {
+              delete this.store[key];
+            }
+          }
         }
       } catch (e) {
         console.log(e);
