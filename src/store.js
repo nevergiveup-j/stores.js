@@ -31,7 +31,7 @@ class Store {
     this.clearExpireTime();
   }
   /**
-   * 获取数据
+   * 判断数据是否失效
    * @params {Object}  参数数据
    * @return {Boolean} 返回数据
    */
