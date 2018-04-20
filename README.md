@@ -50,5 +50,5 @@ options 参数配置
 | get        | 获取本地存储的数据              |         |  data    | store.get() |
 | set        | 设置本地数据      | Object|Array|String|Number | boolean | store.set('date test===',{}) |
 | delete     | 删除本地数据                   |         | boolean  | store.delete() |
-| clear      | 清除前缀`prefix`本地数据        |         |          | store.clear() |
-| clearAll   | 清除全部本地数据                |         |          | store.clearAll() |
+| clear      | 清除前缀`prefix`本地数据        |         |          | store.clear() |
+| clearAll   | 清除全部本地数据                |         |          | store.clearAll() |
