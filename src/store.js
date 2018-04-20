@@ -6,20 +6,26 @@ const cacheStore = {};
 /**
  * @class Store
  * 存储层，将单页数据保存于localStorage中
- * @param {String} name   名字
- * @param {String} expire 设置失效时间
- * @param {String} prefix 前缀名字
- * @param {String} typeStore 类型 local|session
+ * @param {String} name      名字
+ * @param {String} expire    设置失效时间
+ * @param {Object} options   参数配置
+ * @config {String} prefix    前缀名字
+ * @config {String} type 类型 localStorage|sessionStorage
  */
 class Store {
-  constructor(name, expire = '7d', prefix, typeStore = 'local') {
-    this.prefix = prefix || 'NG_';
+  constructor(name, expire = '7d', options = {}) {
+    this.opts = Object.assign({
+      prefix: 'NG_',
+      type: 'localStorage',
+    }, options);
+
+    this.prefix = this.opts.prefix;
     this.name = `${this.prefix}_${name}`;
     this.expire = parseDate(expire);
 
-    const isSupported = !!window[`${typeStore}Storage`];
+    const isSupported = !!window[`${this.opts.type}`];
 
-    this.store = isSupported ? window[`${typeStore}Storage`] : cacheStore;
+    this.store = isSupported ? window[`${this.opts.type}`] : cacheStore;
 
     // 清除失效时间
     this.clearExpireTime();
@@ -103,7 +109,7 @@ class Store {
           }
         }
       } catch (e) {
-        console.log(e);
+        console.error(e);
       }
       return key;
     });
