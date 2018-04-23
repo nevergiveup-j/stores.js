@@ -39,7 +39,7 @@ options 参数配置
 | 参数        | 说明                         |  类型   | 默认值    |
 | --------   | ---------------------------- | ------ | --------------- |
 | prefix     | 前缀名字，为了清除localStorage失效数据     | string  |                |
-| type       | 存取分别为localStorage|sessionStorage   | string  | 默认localStorage |
+| type       | 存取分别为localStorage/sessionStorage   | string  | 默认localStorage |
 
 
 ### 创建`const store = new Store('test')`实例，`store`提供的 API 如下
