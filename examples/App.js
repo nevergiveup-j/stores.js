@@ -12,13 +12,12 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    const store = new Store('test1', '1Y1m', {
+    const store = new Store('test', '1Y1m', {
       prefix: 'NG_',
       type: 'localStorage',
     });
 
     store.set({ name: 'store name' });
-    // store1.set({ name: 'store name' });
 
     // store.delete();
 

@@ -86,7 +86,15 @@ class Store {
       params,
     };
 
-    this.store[this.name] = JSON.stringify(data);
+    try {
+      this.store[this.name] = JSON.stringify(data);
+    } catch (e) {
+      if (e.name === 'QuotaExceededError') {
+        console.error('超出本地存储限额！');
+        this.clearAll();
+        this.store[this.name] = JSON.stringify(data);
+      }
+    }
 
     return true;
   }
