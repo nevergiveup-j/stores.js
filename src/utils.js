@@ -26,14 +26,31 @@ export function timeNow() {
 }
 
 /**
- * 数据相同
- * @param {Object} a 数据1
- * @param {Object} b 数据2
- * @return {Boolean}
+ * 是否值相等
+ * @param {object} data1 数据1
+ * @param {object} data2 数据2
  */
-export function isEqual(a, b) {
-  if (isObject(a) && isObject(b)) {
-    return deepAsset(a, b);
+export const isEqual = (x, y) => {
+  if (!(x instanceof Object) || !(y instanceof Object)) return false;
+
+  const keysX = Object.keys(x);
+  const keysY = Object.keys(y);
+
+  // 长度不相等
+  if (keysX.length !== keysY.length) return false;
+
+  for (let i = 0; i < keysX.length; i += 1) {
+    const propName = keysX[i];
+
+    // value等于object、function
+    if (typeof x[propName] === 'object' || typeof x[propName] === 'function') {
+      if (!deepAsset(x[propName], y[propName])) {
+        return false;
+      }
+    } else if (x[propName] !== y[propName]) {
+      return false;
+    }
   }
-  return false;
-}
+
+  return true;
+};

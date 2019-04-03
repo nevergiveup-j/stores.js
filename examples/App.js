@@ -17,14 +17,21 @@ class App extends Component {
       type: 'localStorage',
     });
 
-    store.set({ name: 'store name' });
+    store.set({ name: 'store name' }, {
+      test: '1',
+      a: '2',
+    });
 
     // store.delete();
 
     // store.clearAll();
 
     console.log('store===', store.store);
-    console.log('get===', store.get());
+    console.log('get===', store.get({
+      a: '2',
+      test: '1',
+    }));
+    console.log('get===', store.has());
   }
   render() {
     return (
