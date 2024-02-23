@@ -107,7 +107,7 @@ class Store {
     const re = new RegExp(`^${this.prefix}`);
     Object.keys(this.store).map((key) => {
       try {
-        if (re.test(key)) {
+        if (re.test(key) && /^\{([\s\S]*?)\}$/.test(this.store[key])) {
           const data = JSON.parse(this.store[key]);
 
           if (utils.isObject(data)) {

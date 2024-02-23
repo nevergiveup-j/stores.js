@@ -36,6 +36,9 @@ export const isEqual = (x, y) => {
   const keysX = Object.keys(x);
   const keysY = Object.keys(y);
 
+  // 两边为空对象
+  if (keysX.length === 0 && keysY.length === 0) return false;
+
   // 长度不相等
   if (keysX.length !== keysY.length) return false;
 
